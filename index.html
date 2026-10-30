@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عبدالله آل رامس</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="عبدالله آل رامس، معلّق صوتي. استمع إلى 25 عملًا لجهات حكومية وتعليمية وخيرية وخاصة، وتواصل مباشرة عبر واتساب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: a night recording booth. Hero = name + the stage player whose seek bar is the real waveform of his voice.
+   Below: works library, wall of clients, how we work, contact. RTL, right-aligned. Single dark look by choice. */
+:root {
+  color-scheme: dark;
+  --ink: #16121c;          /* booth at night, plum-tinted */
+  --panel: #201a28;
+  --panel-2: #2a2333;
+  --text: #f4ede4;
+  --muted: #a89db2;
+  --hair: rgba(244, 237, 228, .1);
+  --saffron: #f2b33d;      /* played waveform, focus */
+  --onair: #ef4b3c;        /* the on-air lamp */
+  /* qatt asiri family, one per category */
+  --q-red: #e0503c; --q-saffron: #f2b33d; --q-green: #3fa77a; --q-blue: #5b84e6; --q-pink: #d9468a;
+  --display: "Alexandria", "Segoe UI", Tahoma, sans-serif;
+  --body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --s-1: .875rem; --s0: 1rem; --s1: 1.25rem; --s2: 1.75rem; --s3: clamp(2rem, 4.2vw, 3rem);
+  --s4: clamp(3.2rem, 7.4vw, 6.4rem);
+  --max: 1200px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--ink); color: var(--text);
+  font-family: var(--body); font-size: var(--s0); line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--ink);
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--saffron); outline-offset: 3px; }
+.wrap {
+  max-width: var(--max); margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+h2 { font-size: var(--s3); font-weight: 700; line-height: 1.2; }
+.sub { color: var(--muted); margin: 10px 0 0; max-width: 60ch; }
+
+/* Nav */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hair);
+}
+.top .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+.brand { font-family: var(--display); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
+.links { display: flex; gap: 22px; margin-inline-start: auto; }
+.links a { text-decoration: none; color: var(--muted); font-size: .95rem; }
+.links a:hover { color: var(--text); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px 24px; border-radius: 999px; border: 1px solid var(--hair);
+  background: transparent; text-decoration: none; font-weight: 600; cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.btn:hover { border-color: var(--text); }
+.btn svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.btn-solid { background: var(--text); color: var(--ink); border-color: var(--text); }
+.btn-solid:hover { background: var(--saffron); border-color: var(--saffron); }
+.btn-sm { padding: 8px 18px; font-size: .9rem; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero::before {           /* the booth lamp */
+  content: ""; position: absolute; inset: -30% -10% auto auto; width: 70%; height: 120%;
+  background: radial-gradient(closest-side, rgba(242, 179, 61, .10), transparent 70%);
+  pointer-events: none;
+}
+.hero .wrap {
+  position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(40px, 8vw, 96px) clamp(48px, 7vw, 88px);
+}
+.role { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; color: var(--muted); font-size: var(--s1); }
+.lamp {
+  display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 14px;
+  border: 1px solid var(--hair); border-radius: 999px; font-size: .8rem; color: var(--muted);
+  font-family: var(--display); font-weight: 500; transition: color .3s, border-color .3s, background .3s;
+}
+.lamp i { width: 8px; height: 8px; border-radius: 50%; background: #4a3f52; transition: background .3s, box-shadow .3s; }
+.lamp.live { color: var(--text); border-color: rgba(239, 75, 60, .55); background: rgba(239, 75, 60, .12); }
+.lamp.live i { background: var(--onair); box-shadow: 0 0 0 4px rgba(239, 75, 60, .2), 0 0 14px var(--onair); }
+@media (prefers-reduced-motion: no-preference) { .lamp.live i { animation: lamp 1.4s ease-in-out infinite; } }
+@keyframes lamp { 50% { box-shadow: 0 0 0 7px rgba(239, 75, 60, .08), 0 0 22px var(--onair); } }
+h1 { font-size: var(--s4); font-weight: 700; line-height: 1.08; letter-spacing: -.01em; }
+.lede { font-size: 1.12rem; margin: 22px 0 30px; max-width: 40ch; color: #d9d0dc; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.tally { margin: 30px 0 0; color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; }
+.tally b { color: var(--text); font-weight: 600; }
+
+/* Stage */
+.stage {
+  min-width: 0; background: var(--panel); border: 1px solid var(--hair); border-radius: 18px;
+  padding: 12px 12px 18px; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .7);
+}
+.screen { position: relative; border-radius: 10px; overflow: hidden; background: #0c0a10; aspect-ratio: 16 / 9; max-width: 100%; }
+.screen video { width: 100%; height: 100%; object-fit: contain; display: block; background: #0c0a10; }
+.big-play {
+  position: absolute; inset: 0; margin: auto; width: 84px; height: 84px; border-radius: 50%;
+  border: 0; background: var(--text); color: var(--ink); cursor: pointer; display: grid; place-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .45); transition: transform .2s, background .2s;
+}
+.big-play:hover { transform: scale(1.06); background: var(--saffron); }
+.big-play svg { width: 30px; height: 30px; fill: currentColor; margin-inline-end: -4px; }
+.now { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 16px 8px 4px; flex-wrap: wrap; }
+.now h3 { font-size: var(--s1); font-weight: 500; min-width: 0; }
+.cat { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: .88rem; white-space: nowrap; }
+.cat i { width: 8px; height: 8px; border-radius: 2px; transform: rotate(45deg); background: var(--c, var(--muted)); flex: none; }
+.deck { display: flex; align-items: center; gap: 10px; padding: 8px 8px 0; }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--hair); background: transparent;
+  display: grid; place-items: center; cursor: pointer; flex: none; transition: background .2s, border-color .2s;
+}
+.icon-btn:hover { background: var(--panel-2); border-color: var(--muted); }
+.icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.icon-btn.main { width: 48px; height: 48px; background: var(--text); color: var(--ink); border-color: var(--text); }
+.icon-btn.main:hover { background: var(--saffron); border-color: var(--saffron); }
+.scrub {
+  flex: 1; min-width: 0; height: 56px; display: flex; align-items: center; gap: 2px; cursor: pointer;
+  touch-action: none; padding-inline: 4px; border-radius: 6px;
+}
+.scrub span {
+  flex: 1; min-width: 1px; border-radius: 2px; background: rgba(244, 237, 228, .2);
+  transition: background .15s;
+}
+.scrub span.on { background: var(--saffron); }
+.scrub:hover span:not(.on) { background: rgba(244, 237, 228, .32); }
+@media (prefers-reduced-motion: no-preference) {
+  .scrub.intro span { animation: rise .7s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 9ms); transform-origin: center; }
+  @keyframes rise { from { transform: scaleY(.08); opacity: .3; } }
+}
+.time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .85rem; direction: ltr; white-space: nowrap; min-width: 84px; text-align: center; }
+
+/* Qatt band */
+.qatt {
+  height: 14px; opacity: .9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='14'%3E%3Cpath d='M0 14L7 0 14 14z' fill='%23e0503c'/%3E%3Cpath d='M14 14L21 0 28 14z' fill='%23f2b33d'/%3E%3Cpath d='M28 14L35 0 42 14z' fill='%233fa77a'/%3E%3Cpath d='M42 14L49 0 56 14z' fill='%235b84e6'/%3E%3Cpath d='M56 14L63 0 70 14z' fill='%23d9468a'/%3E%3C/svg%3E");
+  background-repeat: repeat-x; background-size: auto 100%;
+}
+
+section { padding-block: clamp(64px, 9vw, 112px); }
+.head { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+
+/* Works */
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--hair); background: transparent; border-radius: 999px; padding: 6px 16px;
+  cursor: pointer; font-size: .92rem; color: var(--muted); display: inline-flex; align-items: center; gap: 8px;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.chip:hover { color: var(--text); }
+.chip i { width: 7px; height: 7px; border-radius: 2px; transform: rotate(45deg); background: var(--c); }
+.chip small { font-size: .8rem; opacity: .7; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] { background: var(--text); color: var(--ink); border-color: var(--text); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 36px 20px; }
+.card {
+  display: flex; flex-direction: column; gap: 10px; min-width: 0; text-align: right;
+  background: none; border: 0; padding: 0; cursor: pointer;
+}
+.thumb { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 8px; overflow: hidden; background: var(--panel); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2, .8, .2, 1), filter .3s; filter: saturate(.9) brightness(.92); }
+.card:hover .thumb img { transform: scale(1.04); filter: none; }
+.dur {
+  position: absolute; bottom: 8px; left: 8px; background: rgba(12, 10, 16, .78); color: var(--text);
+  font-size: .78rem; padding: 1px 8px; border-radius: 4px; direction: ltr; font-variant-numeric: tabular-nums;
+}
+.playing-tag {
+  position: absolute; inset: 0; display: none; place-items: center; background: rgba(22, 18, 28, .62);
+  font-family: var(--display); font-weight: 500; font-size: .9rem;
+}
+.playing-tag span { display: inline-flex; align-items: end; gap: 3px; height: 18px; margin-inline-start: 8px; }
+.playing-tag span b { width: 3px; background: var(--saffron); border-radius: 1px; height: 40%; }
+@media (prefers-reduced-motion: no-preference) {
+  .playing .playing-tag span b { animation: eq .9s ease-in-out infinite; }
+  .playing-tag span b:nth-child(2) { animation-delay: -.3s !important; }
+  .playing-tag span b:nth-child(3) { animation-delay: -.6s !important; }
+  @keyframes eq { 50% { height: 100%; } }
+}
+.card.current .thumb { outline: 2px solid var(--saffron); outline-offset: 3px; }
+.card.current .playing-tag { display: grid; }
+.card h3 { font-family: var(--body); font-size: 1rem; font-weight: 500; line-height: 1.5; }
+.mini { display: flex; align-items: center; gap: 1px; height: 18px; opacity: .55; }
+.mini b { flex: 1; background: var(--muted); border-radius: 1px; }
+.card .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+
+/* Clients */
+.clients { background: var(--panel); }
+.wall {
+  list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center;
+  column-gap: 18px; row-gap: 6px; font-family: var(--display); font-weight: 300;
+  font-size: clamp(1.4rem, 3.2vw, 2.5rem); line-height: 1.5;
+}
+.wall li { display: inline-flex; align-items: center; gap: 18px; }
+.wall li:not(:last-child)::after {
+  content: ""; width: 10px; height: 10px; transform: rotate(45deg); border-radius: 2px;
+  background: var(--q, var(--saffron)); opacity: .85;
+}
+.wall li:nth-child(5n+1) { --q: var(--q-red); } .wall li:nth-child(5n+2) { --q: var(--q-saffron); }
+.wall li:nth-child(5n+3) { --q: var(--q-green); } .wall li:nth-child(5n+4) { --q: var(--q-blue); }
+.wall li:nth-child(5n) { --q: var(--q-pink); }
+.wall-note { color: var(--muted); margin: 28px 0 0; }
+
+/* Offer + process */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 96px); }
+.offer { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 0; }
+.offer li { display: flex; justify-content: space-between; gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--hair); font-size: 1.08rem; }
+.offer li span { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 28px; }
+.steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 18px; align-items: start; }
+.steps .n {
+  font-family: var(--display); font-weight: 300; font-size: 2.6rem; line-height: 1; color: var(--saffron);
+}
+.steps h3 { font-size: var(--s1); font-weight: 500; margin-bottom: 4px; }
+.steps p { margin: 0; color: var(--muted); }
+
+/* Contact */
+.contact { text-align: center; position: relative; overflow: hidden; }
+.contact h2 { font-size: var(--s4); line-height: 1.1; }
+.contact .sub { margin: 18px auto 0; }
+.number {
+  font-family: var(--display); font-weight: 300; font-size: clamp(1.8rem, 5vw, 3.2rem);
+  direction: ltr; margin: 34px 0 26px; user-select: all; font-variant-numeric: tabular-nums; letter-spacing: .02em;
+}
+.contact .actions { justify-content: center; }
+.copied { min-height: 1.6em; margin: 14px 0 0; color: var(--saffron); font-size: .92rem; }
+footer { border-top: 1px solid var(--hair); }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 24px; color: var(--muted); font-size: .85rem; }
+
+/* Floating WhatsApp on phones */
+.fab {
+  position: fixed; z-index: 25; display: none;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px)); left: max(16px, env(safe-area-inset-left, 0px));
+  width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #0b2b17;
+  place-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+}
+.fab svg { width: 28px; height: 28px; fill: currentColor; }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .links { display: none; }
+  .top .btn { margin-inline-start: auto; }
+}
+@media (max-width: 560px) {
+  .fab { display: grid; }
+  .top .btn { display: none; }
+  .deck { flex-wrap: wrap; }
+  .scrub { order: -1; flex-basis: 100%; height: 48px; }
+  .time { margin-inline-start: auto; }
+  .stage { padding: 8px 8px 14px; border-radius: 14px; }
+  #mute { display: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 12px; }
+  .card .mini { display: none; }
+  .card h3 { font-size: .92rem; }
+}
+</style>
+</head><body>
+
+<div dir="rtl" lang="ar">
+  <nav class="top" aria-label="التنقل">
+    <div class="wrap">
+      <a class="brand" href="#top">عبدالله آل رامس</a>
+      <div class="links">
+        <a href="#works">الأعمال</a>
+        <a href="#clients">الجهات</a>
+        <a href="#process">طريقة العمل</a>
+        <a href="#contact">تواصل</a>
+      </div>
+      <a class="btn btn-sm btn-solid js-wa" href="#contact" target="_blank" rel="noopener">راسلني على واتساب</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="role"><span class="lamp" id="lamp"><i></i>على الهواء</span>معلّق صوتي</p>
+        <h1>عبدالله<br>آل رامس</h1>
+        <p class="lede">أعلّق على الإعلانات والأفلام التعريفية والمحتوى التعليمي والتوعوي، لجهات حكومية وتعليمية وخيرية وخاصة في أنحاء المملكة.</p>
+        <div class="actions">
+          <button class="btn btn-solid" id="hero-play" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+            استمع الآن
+          </button>
+          <a class="btn js-wa" href="#contact" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+            تواصل عبر واتساب
+          </a>
+        </div>
+        <p class="tally" id="tally"></p>
+      </div>
+
+      <div class="stage" id="stage" aria-label="مشغّل الأعمال">
+        <div class="screen">
+          <video id="player" playsinline preload="metadata"></video>
+          <button class="big-play" id="big-play" type="button" aria-label="تشغيل">
+            <svg viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+          </button>
+        </div>
+        <div class="now">
+          <h3 id="now-title"></h3>
+          <span class="cat" id="now-cat"><i></i><span></span></span>
+        </div>
+        <div class="deck">
+          <button class="icon-btn" id="prev" type="button" aria-label="العمل السابق"><svg viewBox="0 0 24 24"><path d="M18 5v14l-9-7zM6 5h2v14H6z"/></svg></button>
+          <button class="icon-btn main" id="toggle" type="button" aria-label="تشغيل"><svg viewBox="0 0 24 24" id="toggle-icon"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></button>
+          <button class="icon-btn" id="next" type="button" aria-label="العمل التالي"><svg viewBox="0 0 24 24"><path d="M6 5v14l9-7zM16 5h2v14h-2z"/></svg></button>
+          <div class="scrub" id="scrub" role="slider" tabindex="0" aria-label="موضع التشغيل" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          <span class="time" id="time">0:00 / 0:00</span>
+          <button class="icon-btn" id="mute" type="button" aria-label="كتم الصوت"><svg viewBox="0 0 24 24" id="mute-icon"><path d="M4 9v6h4l5 4V5L8 9zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></button>
+          <button class="icon-btn" id="fs" type="button" aria-label="ملء الشاشة"><svg viewBox="0 0 24 24"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="qatt" role="presentation"></div>
+
+  <main>
+    <section id="works" class="wrap">
+      <div class="head">
+        <div>
+          <h2>الأعمال</h2>
+          <p class="sub">اختر أي عمل ليُعرض في المشغّل أعلى الصفحة.</p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="تصفية حسب النوع"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="clients" class="clients">
+      <div class="wrap">
+        <div class="head"><h2>جهات عملت معها</h2></div>
+        <ul class="wall">
+          <li>وزارة التعليم</li>
+          <li>مستشفى الملك فهد التخصصي</li>
+          <li>قاعدة الملك خالد الجوية</li>
+          <li>جامعة جدة</li>
+          <li>جامعة نجران</li>
+          <li>الكلية التقنية بنجران</li>
+          <li>الكلية التقنية بأبها</li>
+          <li>Easy Lancer</li>
+          <li>الأساسية (GREE)</li>
+        </ul>
+        <p class="wall-note">إضافة إلى العديد من الجهات الحكومية والخيرية.</p>
+      </div>
+    </section>
+
+    <section id="process" class="wrap split">
+      <div>
+        <h2>ماذا أقدّم</h2>
+        <ul class="offer" id="offer"></ul>
+      </div>
+      <div>
+        <h2>طريقة العمل</h2>
+        <ol class="steps">
+          <li><span class="n">١</span><div><h3>أرسل النص</h3><p>أرسل النص عبر واتساب مع نوع العمل والنبرة التي تناسب جمهورك.</p></div></li>
+          <li><span class="n">٢</span><div><h3>أسجّل التعليق</h3><p>أسجّل التعليق وأرسله لك بجودة جاهزة للمونتاج.</p></div></li>
+          <li><span class="n">٣</span><div><h3>نعدّل حتى يكتمل</h3><p>أعدّل بحسب ملاحظاتك حتى يصبح العمل جاهزًا للنشر.</p></div></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div class="qatt" role="presentation"></div>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>عندك نص يحتاج صوت؟</h2>
+      <p class="sub">راسلني على واتساب وأرد عليك بالتفاصيل.</p>
+      <p class="number" id="number"></p>
+      <div class="actions">
+        <a class="btn btn-solid js-wa" href="#contact" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          راسلني على واتساب
+        </a>
+        <button class="btn" id="copy" type="button">نسخ الرقم</button>
+      </div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap"><span>© <span id="year"></span> عبدالله آل رامس</span><span>معلّق صوتي</span></div>
+  </footer>
+
+  <a class="fab js-wa" href="#contact" target="_blank" rel="noopener" aria-label="راسلني على واتساب">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+</div>
+
+<script>
+  // ===== بيانات قابلة للتعديل =====
+  const PROFILE = {
+    phoneIntl: "966532457217",
+    phoneLocal: "053 245 7217",
+    waText: "السلام عليكم، شفت أعمالك في التعليق الصوتي وودي أتواصل معك بخصوص عمل."
+  };
+  const CATS = {
+    "إعلاني": "var(--q-red)",
+    "تعليمي": "var(--q-saffron)",
+    "خيري وصحي": "var(--q-green)",
+    "توعوي": "var(--q-blue)",
+    "سياحي ووثائقي": "var(--q-pink)"
+  };
+  // [رقم الملف، العنوان، النوع، المدة]
+  const WORKS = [
+    ["12", "مشاهد جوية من عسير", "سياحي ووثائقي", "1:17"],
+    ["01", "إعلان عطر بطابع تراثي", "إعلاني", "0:22"],
+    ["03", "Easy Lancer لخدمات الترجمة", "إعلاني", "0:50"],
+    ["08", "جامعة نجران: الإرشاد الطلابي", "تعليمي", "2:00"],
+    ["15", "تأمل في سماء الليل", "سياحي ووثائقي", "0:42"],
+    ["18", "برنامج «كويز دري» الرمضاني", "إعلاني", "0:45"],
+    ["06", "من شمائل النبي صلى الله عليه وسلم", "توعوي", "2:26"],
+    ["16", "باقات «نور» للتبرع", "خيري وصحي", "0:54"],
+    ["02", "تنومة، منطقة عسير", "سياحي ووثائقي", "0:52"],
+    ["20", "متجر الشروق لتجهيزات المناسبات", "إعلاني", "0:56"],
+    ["11", "استمرار التعليم عن بعد", "تعليمي", "0:50"],
+    ["26", "مسابقة «رتّل»", "خيري وصحي", "0:45"],
+    ["21", "إعلان برنامج صيفي", "إعلاني", "0:32"],
+    ["13", "تعزيز أهمية التعليم الإلكتروني", "تعليمي", "6:44"],
+    ["27", "#نبيها_صفر", "توعوي", "0:20"],
+    ["04", "وحدة الدعم التشجيعي", "خيري وصحي", "3:05"],
+    ["25", "الأساسية: التسوق الإلكتروني", "إعلاني", "0:15"],
+    ["17", "مبادرة توظيف الخريجين", "تعليمي", "3:46"],
+    ["07", "تعريف بعيادة متخصصة في القصيم", "خيري وصحي", "1:28"],
+    ["22", "إنجازات قسم التوجيه والإرشاد", "تعليمي", "2:33"],
+    ["09", "جمعية ابتسم: صدقتك اليومية", "خيري وصحي", "0:14"],
+    ["23", "ماراثون القراءة", "تعليمي", "0:55"],
+    ["14", "طريقة التحويل لحساب الجمعية", "خيري وصحي", "0:58"],
+    ["10", "حلقات تحفيظ القرآن", "خيري وصحي", "0:10"],
+    ["24", "برنامج الاستقطاع الشهري", "خيري وصحي", "1:21"]
+  ];
+  // مستويات الصوت الحقيقية لكل عمل (مستخرجة من الملفات)
+  const PEAKS = {"01": "123333576566667887655788758999886887555798888788899866678976447669967658969989787556577875446797", "02": "226523866522789775338378986665987776555478988743688777534768887675446978875448478663675476755765", "03": "378797789898569878774285966988763376686768774478987587677756377867868976317466454007762003000000", "04": "666678778767886888778668885799787688986779888677989887885868787888877797787699787889987876757754", "06": "343433778899887879778779787967787586677686878787775888868887767778678777887878967877687699888712", "07": "298886699687778859737468878868677977488768758665878778758885878587787878886776775475488886655100", "08": "023000210788778878973997989977888968897989888987797887788887886787988988878578988888685789752020", "09": "213079867565448978686425988764357744557785654211103032030000276685446733676676458531866465210000", "10": "049697521112222224863759857996694433333855449686636787677353222223374856632111578785744333111110", "11": "099842245663120013756886777654988888776665578887577855677777588686688748787586664468757720300000", "12": "652247778768876988788687776788877787878788886776877897488549758867776989876877787979878867573333", "13": "747888898988998888878899873666739377389373885555544555556765555442445566554546554566655656655671", "14": "212399998969887886859789877897787888878988787678877687975878787878878864788866876522224222222221", "15": "179777632266967884325983598732875566543779799877552278999883598434798366432698866338757632222110", "16": "222279887589876774689884798949957888987667696866987685967733378876312221127752764215875866512111", "17": "153888879889997788887979888688898987886897988879977987888898877959867978787789868879977879756783", "18": "072773222223478875385883798887778867474868683898988858778887688854838962833332333333333333233311", "20": "686786777783887877886866886776788763958578686997678969777397556797996867867867467696818730000000", "21": "288867666548776387654987878752775647577867577886787654876636769665376654982578533333333333333221", "22": "779777567987677776787747688895887686997766788766777676667887888788877996887599886688878722303030", "23": "458677997617678977787879788857878687776773698875767668658778677776578755886555878676677643654000", "24": "297687747898688868877288978987888634988886988968968678996898387787988978968589897577888853333333", "25": "568766789698787687986667679799779787877787987776798888778797898688776889898888778778777788886774", "26": "368888877766877778798787778798789763977878659867577587872589876222222222211111175222211222222111", "27": "188764883376987877678765777788675597777776978758586978788732218864642222222222112111111111111111"};
+  // ================================
+
+  const $ = s => document.querySelector(s);
+  const secs = d => { const [m, s] = d.split(":").map(Number); return m * 60 + s; };
+  const fmt = t => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
+  const toArabicDigits = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+
+  // واتساب والرقم
+  const waUrl = "https://wa.me/" + PROFILE.phoneIntl + "?text=" + encodeURIComponent(PROFILE.waText);
+  document.querySelectorAll(".js-wa").forEach(a => a.href = waUrl);
+  $("#number").textContent = PROFILE.phoneLocal;
+  $("#year").textContent = new Date().getFullYear();
+  $("#copy").addEventListener("click", () => {
+    const msg = $("#copied");
+    const select = () => {
+      const r = document.createRange(); r.selectNodeContents($("#number"));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      msg.textContent = "الرقم محدد، انسخه يدويًا";
+    };
+    try {
+      navigator.clipboard.writeText(PROFILE.phoneLocal.replace(/\s/g, "")).then(() => msg.textContent = "تم نسخ الرقم", select);
+    } catch (e) { select(); }
+  });
+
+  // الإحصاءات
+  const totalMin = Math.round(WORKS.reduce((a, w) => a + secs(w[3]), 0) / 60);
+  $("#tally").innerHTML = "<b>" + WORKS.length + " عملًا</b> بإجمالي <b>" + totalMin + " دقيقة</b> من التعليق الصوتي.";
+
+  // ماذا أقدّم: من الأعمال نفسها
+  const offerNames = {
+    "إعلاني": "إعلانات تجارية", "تعليمي": "محتوى تعليمي وتعريفي", "خيري وصحي": "حملات خيرية وصحية",
+    "توعوي": "محتوى توعوي ودعوي", "سياحي ووثائقي": "محتوى سياحي ووثائقي"
+  };
+  $("#offer").innerHTML = Object.keys(CATS).map(c => {
+    const n = WORKS.filter(w => w[2] === c).length;
+    return "<li>" + offerNames[c] + "<span>" + (n === 2 ? "" : n) + (n === 2 ? "عملان" : n < 11 ? " أعمال" : " عملًا") + "</span></li>";
+  }).join("");
+
+  // المشغّل
+  const player = $("#player"), scrub = $("#scrub"), lamp = $("#lamp");
+  const BAR_N = 96;
+  for (let i = 0; i < BAR_N; i++) { const s = document.createElement("span"); s.style.setProperty("--i", i); scrub.appendChild(s); }
+  const bars = [...scrub.children];
+  let list = WORKS.slice(), index = 0, started = false;
+
+  function drawWave(id) {
+    const p = PEAKS[id] || "5".repeat(BAR_N);
+    bars.forEach((b, i) => { const v = +p[Math.floor(i * p.length / BAR_N)]; b.style.height = (12 + v * 9.5) + "%"; });
+  }
+  function paint() {
+    const f = player.duration ? player.currentTime / player.duration : 0;
+    const k = Math.round(f * BAR_N);
+    bars.forEach((b, i) => b.classList.toggle("on", i < k));
+    $("#time").textContent = fmt(player.currentTime) + " / " + fmt(player.duration || secs(list[index][3]));
+    scrub.setAttribute("aria-valuenow", Math.round(f * 100));
+    scrub.setAttribute("aria-valuetext", fmt(player.currentTime));
+  }
+  let raf = 0;
+  const loop = () => { paint(); if (!player.paused) raf = requestAnimationFrame(loop); };
+
+  function load(i, autoplay) {
+    index = (i + list.length) % list.length;
+    const [id, title, cat, dur] = list[index];
+    player.src = "media/work-" + id + ".mp4";
+    player.poster = "media/work-" + id + ".jpg";
+    $("#now-title").textContent = title;
+    const c = $("#now-cat"); c.style.setProperty("--c", CATS[cat]); c.lastElementChild.textContent = cat + "، " + dur;
+    drawWave(id); paint();
+    document.querySelectorAll(".card").forEach(card => card.classList.toggle("current", card.dataset.id === id));
+    if (autoplay) play();
+  }
+  function play() { started = true; $("#big-play").hidden = true; player.play().catch(() => { $("#big-play").hidden = false; }); }
+  const PLAY = "M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z";
+  const PAUSE = "M6 4h4v16H6zM14 4h4v16h-4z";
+  player.addEventListener("play", () => {
+    $("#toggle-icon").innerHTML = '<path d="' + PAUSE + '"/>'; $("#toggle").setAttribute("aria-label", "إيقاف مؤقت");
+    lamp.classList.add("live"); document.querySelectorAll(".card.current").forEach(c => c.classList.add("playing"));
+    cancelAnimationFrame(raf); loop();
+  });
+  player.addEventListener("pause", () => {
+    $("#toggle-icon").innerHTML = '<path d="' + PLAY + '"/>'; $("#toggle").setAttribute("aria-label", "تشغيل");
+    lamp.classList.remove("live"); document.querySelectorAll(".card.playing").forEach(c => c.classList.remove("playing")); paint();
+  });
+  player.addEventListener("loadedmetadata", paint);
+  player.addEventListener("ended", () => load(index + 1, true));
+  player.addEventListener("click", () => player.paused ? play() : player.pause());
+
+  $("#big-play").addEventListener("click", play);
+  $("#toggle").addEventListener("click", () => player.paused ? play() : player.pause());
+  $("#prev").addEventListener("click", () => load(index - 1, started));
+  $("#next").addEventListener("click", () => load(index + 1, started));
+  $("#mute").addEventListener("click", () => {
+    player.muted = !player.muted;
+    $("#mute").setAttribute("aria-label", player.muted ? "تشغيل الصوت" : "كتم الصوت");
+    $("#mute-icon").innerHTML = player.muted
+      ? '<path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4z"/>'
+      : '<path d="M4 9v6h4l5 4V5L8 9zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/>';
+  });
+  $("#fs").addEventListener("click", () => {
+    const el = $(".screen");
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (el.requestFullscreen) el.requestFullscreen().catch(() => player.webkitEnterFullscreen && player.webkitEnterFullscreen());
+      else if (player.webkitEnterFullscreen) player.webkitEnterFullscreen();
+    } catch (e) {}
+  });
+
+  // التنقل على الموجة (من اليمين لليسار)
+  function seekAt(x) {
+    const r = scrub.getBoundingClientRect();
+    const f = Math.min(1, Math.max(0, (r.right - x) / r.width));
+    const d = player.duration || secs(list[index][3]);
+    if (player.readyState > 0) { player.currentTime = f * d; paint(); }
+  }
+  let dragging = false;
+  scrub.addEventListener("pointerdown", e => { dragging = true; scrub.setPointerCapture(e.pointerId); seekAt(e.clientX); });
+  scrub.addEventListener("pointermove", e => { if (dragging) seekAt(e.clientX); });
+  scrub.addEventListener("pointerup", () => dragging = false);
+  scrub.addEventListener("keydown", e => {
+    const step = { ArrowLeft: 5, ArrowRight: -5, Home: -1e9, End: 1e9 }[e.key];
+    if (step === undefined) return;
+    e.preventDefault(); player.currentTime = Math.min(player.duration || 0, Math.max(0, player.currentTime + step)); paint();
+  });
+
+  $("#hero-play").addEventListener("click", () => {
+    if (!started) play(); else if (player.paused) play();
+    const r = $("#stage").getBoundingClientRect();
+    if (r.top < 0 || r.bottom > innerHeight) $("#stage").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  });
+
+  // مكتبة الأعمال
+  const grid = $("#grid");
+  WORKS.forEach(([id, title, cat, dur]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "card"; b.dataset.id = id; b.dataset.cat = cat;
+    const p = PEAKS[id] || "";
+    let mini = ""; for (let i = 0; i < 40; i++) mini += '<b style="height:' + (15 + (+p[Math.floor(i * p.length / 40)] || 4) * 9.4) + '%"></b>';
+    b.innerHTML =
+      '<div class="thumb"><img loading="lazy" alt="" src="media/work-' + id + '.jpg"><span class="dur"></span>' +
+      '<span class="playing-tag">يُعرض الآن<span><b></b><b></b><b></b></span></span></div>' +
+      '<h3></h3><div class="row"><span class="cat" style="--c:' + CATS[cat] + '"><i></i><span></span></span><div class="mini" style="width:40%">' + mini + '</div></div>';
+    b.querySelector(".dur").textContent = dur;
+    b.querySelector("h3").textContent = title;
+    b.querySelector(".cat span").textContent = cat;
+    b.setAttribute("aria-label", "تشغيل " + title + "، " + cat + "، المدة " + dur);
+    b.addEventListener("click", () => {
+      const i = list.findIndex(w => w[0] === id);
+      if (i === -1) list = WORKS.slice();
+      load(list.findIndex(w => w[0] === id), true);
+      const r = $("#stage").getBoundingClientRect();
+      if (r.top < 0 || r.bottom > innerHeight) $("#stage").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    });
+    grid.appendChild(b);
+  });
+
+  // التصفية
+  const filters = $("#filters"), chips = [];
+  [["الكل", null], ...Object.keys(CATS).map(c => [c, CATS[c]])].forEach(([label, color], i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", i ? "false" : "true");
+    const count = i ? WORKS.filter(w => w[2] === label).length : WORKS.length;
+    b.innerHTML = (color ? '<i style="--c:' + color + '"></i>' : "") + "<span></span><small>" + count + "</small>";
+    b.querySelector("span").textContent = label;
+    b.addEventListener("click", () => {
+      chips.forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+      grid.querySelectorAll(".card").forEach(c => c.hidden = i ? c.dataset.cat !== label : false);
+      const curId = list[index][0];
+      list = i ? WORKS.filter(w => w[2] === label) : WORKS.slice();
+      const keep = list.findIndex(w => w[0] === curId);
+      if (keep !== -1) index = keep;
+      else if (player.paused) load(0, false);
+      else index = -1;
+    });
+    chips.push(b); filters.appendChild(b);
+  });
+
+  load(0, false);
+  scrub.classList.add("intro");
+  setTimeout(() => scrub.classList.remove("intro"), 1800);
+</script>
+</body></html>
